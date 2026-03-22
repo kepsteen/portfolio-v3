@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "Bash(npx create-next-app@latest portfolio-v3 --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)"
+    ]
+  }
+}
