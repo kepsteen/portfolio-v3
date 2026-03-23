@@ -3,7 +3,13 @@
     "allow": [
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs",
-      "Bash(npx create-next-app@latest portfolio-v3 --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)"
+      "Bash(npx create-next-app@latest portfolio-v3 --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(pnpm --version)",
+      "Bash(pnpm install:*)",
+      "Bash(find /Users/codyepstein/repos/portfolio-v3/node_modules/next/dist/docs -type f -name *.md)",
+      "Bash(git checkout:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm build:*)"
     ]
   }
 }
