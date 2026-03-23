@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+	themes: all;
+}
 
 /* ============================================
    Aura Dark — daisyUI v5 Custom Theme
@@ -7,76 +9,81 @@
    ============================================ */
 
 @plugin "daisyui/theme" {
-  name: "aura-dark";
-  default: false;
-  prefersdark: false;
-  color-scheme: dark;
+	name: "aura-dark";
+	default: false;
+	prefersdark: false;
+	color-scheme: dark;
 
-  /* ── Base surfaces ─────────────────────────────── */
-  --color-base-100: oklch(19.6% 0.006 295.7);   /* #15141b — main background */
-  --color-base-200: oklch(17.6% 0.009 282.5);   /* #110f18 — slightly deeper */
-  --color-base-300: oklch(29.8% 0.010 290.7);   /* #2d2b38 — borders/dividers */
-  --color-base-content: oklch(94.7% 0.003 286);  /* #edecee — foreground text */
+	/* ── Base surfaces ─────────────────────────────── */
+	--color-base-100: oklch(19.6% 0.006 295.7); /* #15141b — main background */
+	--color-base-200: oklch(17.6% 0.009 282.5); /* #110f18 — slightly deeper */
+	--color-base-300: oklch(29.8% 0.01 290.7); /* #2d2b38 — borders/dividers */
+	--color-base-content: oklch(94.7% 0.003 286); /* #edecee — foreground text */
 
-  /* ── Primary: Aura purple ──────────────────────── */
-  --color-primary: oklch(67.7% 0.160 280);       /* #a277ff */
-  --color-primary-content: oklch(17.6% 0.009 282.5); /* dark bg for contrast */
+	/* ── Primary: Aura purple ──────────────────────── */
+	--color-primary: oklch(67.7% 0.16 280); /* #a277ff */
+	--color-primary-content: oklch(17.6% 0.009 282.5); /* dark bg for contrast */
 
-  /* ── Secondary: Aura green ─────────────────────── */
-  --color-secondary: oklch(90.7% 0.120 165);     /* #61ffca */
-  --color-secondary-content: oklch(17.6% 0.009 282.5);
+	/* ── Secondary: Aura green ─────────────────────── */
+	--color-secondary: oklch(90.7% 0.12 165); /* #61ffca */
+	--color-secondary-content: oklch(17.6% 0.009 282.5);
 
-  /* ── Accent: Aura orange ───────────────────────── */
-  --color-accent: oklch(87.2% 0.114 62);         /* #ffca85 */
-  --color-accent-content: oklch(17.6% 0.009 282.5);
+	/* ── Accent: Aura orange ───────────────────────── */
+	--color-accent: oklch(87.2% 0.114 62); /* #ffca85 */
+	--color-accent-content: oklch(17.6% 0.009 282.5);
 
-  /* ── Neutral: muted purple-gray ────────────────── */
-  --color-neutral: oklch(29.8% 0.010 290.7);     /* #2d2b38 */
-  --color-neutral-content: oklch(85% 0.003 286);  /* light gray */
+	/* ── Neutral: muted purple-gray ────────────────── */
+	--color-neutral: oklch(29.8% 0.01 290.7); /* #2d2b38 */
+	--color-neutral-content: oklch(85% 0.003 286); /* light gray */
 
-  /* ── Semantic: info (Aura blue) ────────────────── */
-  --color-info: oklch(86.8% 0.100 210);           /* #82e2ff */
-  --color-info-content: oklch(17.6% 0.009 282.5);
+	/* ── Semantic: info (Aura blue) ────────────────── */
+	--color-info: oklch(86.8% 0.1 210); /* #82e2ff */
+	--color-info-content: oklch(17.6% 0.009 282.5);
 
-  /* ── Semantic: success (Aura green/teal) ───────── */
-  --color-success: oklch(73.9% 0.120 160);        /* #49c29a */
-  --color-success-content: oklch(17.6% 0.009 282.5);
+	/* ── Semantic: success (Aura green/teal) ───────── */
+	--color-success: oklch(73.9% 0.12 160); /* #49c29a */
+	--color-success-content: oklch(17.6% 0.009 282.5);
 
-  /* ── Semantic: warning (Aura orange) ───────────── */
-  --color-warning: oklch(87.2% 0.114 62);         /* #ffca85 */
-  --color-warning-content: oklch(17.6% 0.009 282.5);
+	/* ── Semantic: warning (Aura orange) ───────────── */
+	--color-warning: oklch(87.2% 0.114 62); /* #ffca85 */
+	--color-warning-content: oklch(17.6% 0.009 282.5);
 
-  /* ── Semantic: error (Aura red) ────────────────── */
-  --color-error: oklch(70.6% 0.187 16);           /* #ff6767 */
-  --color-error-content: oklch(98% 0.003 286);
+	/* ── Semantic: error (Aura red) ────────────────── */
+	--color-error: oklch(70.6% 0.187 16); /* #ff6767 */
+	--color-error-content: oklch(98% 0.003 286);
 
-  /* ── Border radius ─────────────────────────────── */
-  --radius-selector: 0.5rem;
-  --radius-field: 0.375rem;
-  --radius-box: 0.5rem;
+	/* ── Border radius ─────────────────────────────── */
+	--radius-selector: 1rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
 
-  /* ── Base sizes ────────────────────────────────── */
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
+	/* ── Base sizes ────────────────────────────────── */
+	--size-selector: 0.25rem;
+	--size-field: 0.25rem;
 
-  /* ── Border ────────────────────────────────────── */
-  --border: 1px;
+	/* ── Border ────────────────────────────────────── */
+	--border: 1px;
 
-  /* ── Effects ───────────────────────────────────── */
-  --depth: 0;
-  --noise: 0;
+	/* ── Effects ───────────────────────────────────── */
+	--depth: 0;
+	--noise: 0;
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
 }
 
 .cursor-blink {
-  animation: blink 1s step-end infinite;
+	animation: blink 1.25s step-end infinite;
 }

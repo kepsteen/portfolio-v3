@@ -9,13 +9,11 @@ import Link from "next/link";
 const socialLinks = [
 	{ label: "GitHub", href: "https://github.com", icon: IconBrandGithub },
 	{ label: "LinkedIn", href: "https://linkedin.com", icon: IconBrandLinkedin },
-	{ label: "X", href: "https://x.com", icon: IconBrandX },
 ];
 
 const companies = [
-	{ name: "Acme Corp", emoji: "🏢", current: true },
-	{ name: "StorageCo", emoji: "📦", current: false },
-	{ name: "Hack Club", emoji: "🐒", current: false },
+	{ name: "HOTB Software", emoji: "🏢", current: true },
+	{ name: "Quantiiv", emoji: "📊", current: false },
 ];
 
 export default function Hero() {
@@ -24,21 +22,23 @@ export default function Hero() {
 			{/* Headline */}
 			<div>
 				<h1 className="font-mono text-3xl md:text-4xl font-bold leading-tight">
-					Hey! I&apos;m <span className="text-primary">Your Name</span>
+					Hey! I&apos;m <span className="text-accent">Cody Epstein</span>
 				</h1>
 			</div>
 
 			{/* Bio */}
 			<p className="font-mono text-base text-base-content/80 leading-relaxed max-w-2xl">
-				I&apos;m currently working as a Senior SWE @{" "}
+				I&apos;m currently working as a SWE @{" "}
 				<a
 					href="#"
 					className="text-primary underline underline-offset-2 decoration-primary decoration-wavy hover:opacity-80 transition-opacity"
 				>
-					Acme Corp
+					HOTB Software
 				</a>
 				. I&apos;ve written{" "}
-				<span className="bg-base-300 px-1 rounded text-primary">software</span>{" "}
+				<span className="bg-base-300 px-1 rounded text-secondary">
+					software
+				</span>{" "}
 				that is trusted by{" "}
 				<a
 					href="#"
@@ -64,7 +64,7 @@ export default function Hero() {
 					<span key={link.label} className="flex items-center gap-3">
 						<a
 							href={link.href}
-							className="flex items-center gap-1.5 hover:text-base-content transition-colors"
+							className="flex items-center gap-1.5 hover:text-primary transition-colors"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
@@ -79,10 +79,14 @@ export default function Hero() {
 				<span className="text-base-content/30">|</span>
 				<Link
 					href="/about"
-					className="flex items-center gap-1 hover:text-base-content transition-colors"
+					className="group flex items-center gap-1 text-primary hover:text-primary/80 transition-colors"
 				>
 					More about me
-					<IconArrowRight size={14} stroke={1.5} />
+					<IconArrowRight
+						size={16}
+						stroke={1.5}
+						className="transition-transform duration-200 group-hover:translate-x-0.5"
+					/>
 				</Link>
 			</div>
 
