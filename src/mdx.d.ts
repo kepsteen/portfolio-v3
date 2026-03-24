@@ -18,5 +18,14 @@ type ProjectMetadata = {
 };
 
 declare module "*.mdx" {
-	export const metadata: ExperienceMetadata | ProjectMetadata;
+	export const metadata:
+		| ExperienceMetadata
+		| ProjectMetadata
+		| {
+				slug: string;
+				title: string;
+				date: string;
+				excerpt: string;
+				tags: string[];
+		  };
 }

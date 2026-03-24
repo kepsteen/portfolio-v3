@@ -142,10 +142,16 @@ const themes = [
 	},
 ];
 
+const crumbLinkClass =
+	"text-base-content hover:text-primary transition-colors no-underline";
+
 export default function Navbar() {
 	const [scrolled, setScrolled] = useState(false);
 	const pathname = usePathname();
-	const pageSegment = pathname === "/" ? null : pathname.split("/")[1];
+	const segments =
+		pathname === "/"
+			? []
+			: pathname.replace(/^\//, "").split("/").filter(Boolean);
 	const activeTheme = useSyncExternalStore(
 		subscribeTheme,
 		getThemeSnapshot,
@@ -182,14 +188,26 @@ export default function Navbar() {
 					{/* Left: home link with blinking cursor */}
 					<div className="navbar-start">
 						<span className="font-mono text-base-content">
-							<Link
-								href="/"
-								className="text-primary hover:text-primary/80 transition-colors"
-								style={{ textDecoration: "none" }}
-							>
+							<Link href="/" className={crumbLinkClass}>
 								~
 							</Link>
-							/{pageSegment && <span>{pageSegment}/</span>}
+							{segments.map((segment, i) => {
+								const href = `/${segments.slice(0, i + 1).join("/")}`;
+								const isCurrent = i === segments.length - 1;
+								return (
+									<span key={href}>
+										/
+										{isCurrent ? (
+											<span aria-current="page">{segment}</span>
+										) : (
+											<Link href={href} className={crumbLinkClass}>
+												{segment}
+											</Link>
+										)}
+									</span>
+								);
+							})}
+							{segments.length > 0 ? <span>/</span> : null}
 							<span className="cursor-blink text-primary">▋</span>
 						</span>
 					</div>

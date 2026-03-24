@@ -27,14 +27,14 @@ export default function ProjectsPage() {
 	return (
 		<>
 			<Navbar />
-			<main className="px-8 pt-24 max-w-4xl mx-auto pb-20">
+			<main className="px-8 pt-24 max-w-6xl mx-auto pb-20">
 				<h1 className="font-mono text-3xl font-bold text-primary">Projects</h1>
 				<p className="font-mono text-base-content/70 mt-4 max-w-2xl leading-relaxed">
 					Selected work and experiments. Each project is authored as MDX alongside structured
 					metadata for reuse on the home page and here.
 				</p>
 
-				<div className="mt-10 flex flex-col gap-6">
+				<div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 					{projects.map(({ metadata }) => (
 						<Link
 							key={metadata.slug}
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
 							<ProjectCoverImage
 								src={metadata.image}
 								alt={metadata.imageAlt ?? `${metadata.name} preview`}
-								heightClass="h-32"
+								heightClass="h-48"
 							/>
 							<div className="card-body p-5 gap-3">
 								<h2 className="font-mono font-bold text-lg text-accent">
