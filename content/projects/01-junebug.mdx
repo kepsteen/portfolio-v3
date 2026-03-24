@@ -1,0 +1,50 @@
+export const metadata = {
+	slug: "junebug",
+	name: "JuneBug",
+	description:
+		"A full-stack journaling app for developers with AI-powered features including automatic titles, memory extraction, and personalized writing prompts.",
+	tags: [
+		"React",
+		"TypeScript",
+		"Express",
+		"Postgres",
+		"Drizzle",
+		"OpenAI",
+		"TanStack Query",
+		"Tiptap",
+	],
+	githubUrl: "https://github.com/kepsteen/june-bugv2",
+	liveUrl: null,
+	image: "/june-bug.webp",
+	imageAlt: "JuneBug journaling app interface",
+};
+
+## Overview
+
+JuneBug is a developer-focused journaling application that combines a clean writing experience with intelligent AI features. Built as a modern full-stack monorepo, it provides one entry per calendar day with a rich text editor, automatic title generation, and AI-powered memory extraction that learns from your writing to generate personalized prompts.
+
+## Highlights
+
+### AI-Powered Features
+
+- **Automatic Titles**: Uses OpenAI to generate contextual titles from entry content
+- **Memory Extraction**: Processes entries to extract and maintain structured memories (goals, projects, wins, blockers, learnings) with embeddings
+- **Personalized Prompts**: Generates writing prompts based on your focus areas and past entries
+- **Graceful Degradation**: Core functionality works without AI; features degrade gracefully when services are unavailable
+
+### Tech Stack
+
+**Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Shadcn UI, Tiptap editor, TanStack Query, React Router
+
+**Backend**: Express, TypeScript, Drizzle ORM, Neon Postgres, Better Auth, Vercel AI SDK + OpenAI, RabbitMQ (optional async pipeline)
+
+**Architecture**: pnpm monorepo with feature-based backend structure, dual user model (Better Auth + app users), and async memory processing pipeline
+
+### Key Features
+
+- Rich text editor with custom slash commands
+- Full-text search and tag-based organization
+- GitHub OAuth and email/password authentication
+- Onboarding flow with user preferences
+- Admin dashboard for AI usage telemetry
+- One entry per day with idempotent creation

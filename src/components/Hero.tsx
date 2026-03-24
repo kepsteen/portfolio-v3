@@ -1,7 +1,6 @@
 import {
 	IconBrandGithub,
 	IconBrandLinkedin,
-	IconBrandX,
 	IconArrowRight,
 } from "@tabler/icons-react";
 import Link from "next/link";
@@ -28,34 +27,10 @@ export default function Hero() {
 
 			{/* Bio */}
 			<p className="font-mono text-base text-base-content/80 leading-relaxed max-w-2xl">
-				I&apos;m currently working as a SWE @{" "}
-				<a
-					href="#"
-					className="text-primary underline underline-offset-2 decoration-primary decoration-wavy hover:opacity-80 transition-opacity"
-				>
-					HOTB Software
-				</a>
-				. I&apos;ve written{" "}
-				<span className="bg-base-300 px-1 rounded text-secondary">
-					software
-				</span>{" "}
-				that is trusted by{" "}
-				<a
-					href="#"
-					className="text-primary underline underline-offset-2 decoration-primary decoration-wavy hover:opacity-80 transition-opacity"
-				>
-					The Open Source Foundation
-				</a>
-				,{" "}
-				<a
-					href="#"
-					className="text-primary underline underline-offset-2 decoration-primary decoration-wavy hover:opacity-80 transition-opacity"
-				>
-					Major Linux Distro
-				</a>
-				, and many others. Seeing code I wrote actually help people at scale is
-				what keeps me building. Currently building AI that helps people
-				articulate their ideas and share them at scale.
+				Full-stack dev who works across every layer of the app — backend,
+				frontend, and everything holding them together. Currently shipping
+				production software in gov tech, previously in startups. I like small
+				teams, hard problems, and owning solutions from end to end.
 			</p>
 
 			{/* Social links */}

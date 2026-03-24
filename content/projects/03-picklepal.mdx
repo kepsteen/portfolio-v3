@@ -1,0 +1,54 @@
+export const metadata = {
+	slug: "pickle-pal",
+	name: "Pickle-Pal",
+	description:
+		"A full-stack partner-matching app for pickleball players with swipe-based discovery, real-time chat, and a unique collaborative pair-swiping mode.",
+	tags: [
+		"React",
+		"TypeScript",
+		"Express",
+		"MongoDB",
+		"Socket.io",
+		"Redis",
+		"AWS S3",
+		"Clerk",
+	],
+	githubUrl: "https://github.com/kepsteen/pickle-pal",
+	liveUrl: null,
+	image: "/pickle-pal.webp",
+	imageAlt: "Pickle-Pal partner matching app interface",
+};
+
+## Overview
+
+Pickle-Pal is a partner-matching app for pickleball enthusiasts — think Tinder, but for finding your next doubles partner. Players create profiles with their skill rating, play style, and what they're looking for (competitive matches, casual rallies, drilling, or just new friends). From there, they swipe through other players nearby and get matched with compatible partners to coordinate games with. The app also features a standout **Pair Swipe** mode where two players team up and jointly swipe on other pairs to find a doubles match — a genuinely novel interaction model that required real-time coordination between multiple clients.
+
+## Highlights
+
+### Pair Swipe — Collaborative Matching
+
+The most technically interesting feature: two players form a pair, then swipe together on other pairs in real-time. Both players in a pair must swipe right for a like to register, and a match only forms when two pairs mutually like each other. This required a WebSocket-based session manager backed by Redis to track multi-party state across clients simultaneously.
+
+### Real-Time Communication
+
+- **Socket.io** powers both the Pair Swipe sessions and in-app messaging
+- Room-based architecture separates chat and matching concerns
+- Typed event interfaces shared between frontend and backend ensure consistent contracts
+
+### Tech Stack
+
+**Frontend**: React 18, TypeScript, Vite, TailwindCSS, DaisyUI, TanStack Query, React Router v7, Socket.io-client, Clerk
+
+**Backend**: Express, TypeScript, MongoDB + Mongoose, Redis, Socket.io, AWS S3, Clerk middleware
+
+**Architecture**: Monorepo with an MVC-style backend, feature-based WebSocket handlers, and Redis-backed session state for real-time flows
+
+### Key Features
+
+- Swipe-based player discovery with filters for skill rating (DUPR), play style, and intent
+- Location-based matching using MongoDB geospatial queries
+- Profile image uploads stored in AWS S3
+- Full real-time chat between matched players
+- Collaborative Pair Swipe mode with synchronized multi-client state
+- Google and email/password authentication via Clerk
+- Onboarding flow to capture skill level, play style, and preferences

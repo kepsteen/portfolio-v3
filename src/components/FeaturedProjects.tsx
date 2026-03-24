@@ -1,29 +1,11 @@
 import { IconStar, IconArrowRight } from "@tabler/icons-react";
 import Link from "next/link";
 
-const projects = [
-	{
-		name: "portfolio-v3",
-		description:
-			"Personal portfolio built with Next.js 16, Tailwind v4, and DaisyUI. Features a terminal-inspired aesthetic and dark theme.",
-		stars: 142,
-		tags: ["Next.js", "TypeScript", "DaisyUI"],
-	},
-	{
-		name: "cli-toolkit",
-		description:
-			"A collection of CLI utilities for automating common development workflows. Used by hundreds of developers.",
-		stars: 891,
-		tags: ["Node.js", "TypeScript", "CLI"],
-	},
-	{
-		name: "open-sync",
-		description:
-			"Real-time data synchronization library with offline-first support and conflict resolution.",
-		stars: 2047,
-		tags: ["Rust", "WebAssembly", "SQLite"],
-	},
-];
+import { featuredProjects } from "../../content/projects/index";
+import ProjectCoverImage from "./ProjectCoverImage";
+
+/** Height of the “browser” content area below the title bar (title bar uses MacDots). */
+const FEATURED_WINDOW_HEIGHT = "h-56";
 
 function MacDots() {
 	return (
@@ -45,6 +27,9 @@ function MacDots() {
 }
 
 export default function FeaturedProjects() {
+	const firstTwo = featuredProjects.slice(0, 2);
+	const third = featuredProjects[2];
+
 	return (
 		<section className="flex flex-col gap-6 pb-20">
 			{/* Section header */}
@@ -68,24 +53,34 @@ export default function FeaturedProjects() {
 
 			{/* Project grid */}
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-				{projects.slice(0, 2).map((project) => (
-					<div key={project.name} className="card bg-base-200 overflow-hidden">
+				{firstTwo.map((project) => (
+					<Link
+						key={project.metadata.slug}
+						href={`/projects/${project.metadata.slug}`}
+						className="card bg-base-200 overflow-hidden transition-colors hover:bg-base-200/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+					>
 						{/* Window chrome */}
 						<div className="px-4 py-3 bg-base-300 flex items-center justify-between">
 							<MacDots />
 						</div>
-						{/* Screenshot placeholder */}
-						<div className="h-36 bg-base-300/50 border-b border-base-300" />
+						<ProjectCoverImage
+							src={project.metadata.image}
+							alt={
+								project.metadata.imageAlt ??
+								`${project.metadata.name} preview`
+							}
+							heightClass={FEATURED_WINDOW_HEIGHT}
+						/>
 						{/* Card body */}
 						<div className="card-body p-4 gap-2">
 							<h3 className="font-mono font-bold text-accent">
-								{project.name}
+								{project.metadata.name}
 							</h3>
 							<p className="font-mono text-sm text-base-content/60 leading-relaxed">
-								{project.description}
+								{project.metadata.description}
 							</p>
 							<div className="flex flex-wrap gap-1.5 mt-1">
-								{project.tags.map((tag) => (
+								{project.metadata.tags.map((tag) => (
 									<span
 										key={tag}
 										className="badge badge-sm font-mono bg-base-300 text-base-content/70 border-0"
@@ -95,29 +90,33 @@ export default function FeaturedProjects() {
 								))}
 							</div>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 
 			{/* Third project — full width */}
-			{projects[2] && (
-				<div className="card bg-base-200 overflow-hidden">
+			{third && (
+				<Link
+					href={`/projects/${third.metadata.slug}`}
+					className="card bg-base-200 overflow-hidden transition-colors hover:bg-base-200/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+				>
 					<div className="px-4 py-3 bg-base-300 flex items-center justify-between">
 						<MacDots />
-						<div className="flex items-center gap-1 font-mono text-xs text-base-content/50">
-							<IconStar size={12} stroke={1.5} />
-							{projects[2].stars.toLocaleString()}
-						</div>
 					</div>
+					<ProjectCoverImage
+						src={third.metadata.image}
+						alt={third.metadata.imageAlt ?? `${third.metadata.name} preview`}
+						heightClass={FEATURED_WINDOW_HEIGHT}
+					/>
 					<div className="card-body p-4 gap-2">
 						<h3 className="font-mono font-bold text-primary">
-							{projects[2].name}
+							{third.metadata.name}
 						</h3>
 						<p className="font-mono text-sm text-base-content/60 leading-relaxed">
-							{projects[2].description}
+							{third.metadata.description}
 						</p>
 						<div className="flex flex-wrap gap-1.5 mt-1">
-							{projects[2].tags.map((tag) => (
+							{third.metadata.tags.map((tag) => (
 								<span
 									key={tag}
 									className="badge badge-sm font-mono bg-base-300 text-base-content/70 border-0"
@@ -127,7 +126,7 @@ export default function FeaturedProjects() {
 							))}
 						</div>
 					</div>
-				</div>
+				</Link>
 			)}
 		</section>
 	);
