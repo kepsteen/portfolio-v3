@@ -6,6 +6,9 @@ import PortfolioV3, {
 } from "./02-portfolio-v3.mdx";
 import JuneBug, { metadata as juneBugMeta } from "./01-junebug.mdx";
 import PicklePal, { metadata as picklePalMeta } from "./03-picklepal.mdx";
+import ReactExpressStarter, {
+	metadata as reactExpressStarterMeta,
+} from "./04-react-express-starter.mdx";
 
 export type ProjectMetadata = {
 	slug: string;
@@ -27,6 +30,10 @@ export type ProjectEntry = {
 export const projects: ProjectEntry[] = [
 	{ metadata: juneBugMeta as ProjectMetadata, Content: JuneBug },
 	{ metadata: picklePalMeta as ProjectMetadata, Content: PicklePal },
+	{
+		metadata: reactExpressStarterMeta as ProjectMetadata,
+		Content: ReactExpressStarter,
+	},
 	{ metadata: portfolioV3Meta as ProjectMetadata, Content: PortfolioV3 },
 ];
 

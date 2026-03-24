@@ -1,0 +1,33 @@
+export const metadata = {                                                                                                                                                        
+      slug: "react-express-starter",                                                                                                                                               
+      name: "React + Express Starter",                                                                                                                                             
+      description: "A production-ready full-stack monorepo starter with React 19, Express, Drizzle ORM, and Better Auth — built with strict TypeScript, layered architecture, and developer experience in mind.",
+      tags: ["React", "TypeScript", "Express", "Postgres", "Drizzle", "Better Auth", "Zod", "Vite", "Tailwind", "pnpm"],                                                           
+      githubUrl: "https://github.com/kepsteen/react-express-starter",                                                                                                           
+      liveUrl: null,
+      image: "/react-express-starter.webp",
+	    imageAlt: "React + Express Starter monorepo interface",                                                                                                                                                               
+  };                                                                                                                                                                               
+                                                                                                                                                                                   
+  ### Tech Stack                                                                                                                                                                   
+   
+  **Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Shadcn UI, React Router v7, Better Auth client                                                                        
+                                       
+  **Backend**: Express, TypeScript, Drizzle ORM, Neon Postgres, Better Auth, Zod, drizzle-zod                                                                                      
+                                       
+  **Monorepo**: pnpm workspaces with `@starter/web`, `@starter/api`, and `@starter/shared`                                                                                         
+                                       
+  **Testing**: Vitest across both apps — jsdom environment on the frontend, Node environment on the backend                                                                        
+                                       
+  ### Key Decisions
+  - I prefer a monorepo architecture and manage dependencies with pnpm workspaces.
+  - I've been loving Drizzle ORM for type safety and the ability to define schemas in code and split them by feature.
+  - The API is single express app with controllers, services, routes, schemas and tests colocated by feature
+  - I use Better Auth for authentication and session management.
+
+### Want to use this starter or have a suggestion?
+
+- [Fork the repository on GitHub](https://github.com/kepsteen/react-express-starter)
+- Make your changes
+- Submit a pull request
+- I'll review it and merge it if it's a good fit

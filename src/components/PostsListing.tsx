@@ -127,7 +127,7 @@ export default function PostsListing({ posts }: Props) {
 								>
 									{formatPostDate(metadata.date)}
 								</time>
-								<p className="font-mono text-sm text-base-content/70 leading-relaxed mt-3">
+								<p className="font-mono text-[0.95rem] text-base-content/75 leading-7 mt-3">
 									{metadata.excerpt}
 								</p>
 								<div className="flex flex-wrap gap-1.5 mt-4">

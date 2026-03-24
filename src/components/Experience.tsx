@@ -7,6 +7,7 @@ type ExperienceMetadata = {
 	startDate: string;
 	endDate: string | null;
 	type: "full-time" | "part-time" | "contract";
+	companyUrl: string;
 };
 
 function formatDate(dateStr: string): string {
@@ -33,16 +34,21 @@ export default function Experience() {
 						>
 							<div className="flex flex-col gap-1">
 								<div className="flex flex-wrap items-center justify-between gap-2">
-									<span className="font-mono font-bold text-base-content">
+									<a
+										href={meta.companyUrl}
+										className="font-mono font-bold text-primary hover:text-primary/80 transition-colors"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										{meta.company}
-									</span>
+									</a>
 									<span className="font-mono text-xs text-base-content/40">
 										{formatDate(meta.startDate)} —{" "}
 										{meta.endDate ? formatDate(meta.endDate) : "Present"}
 									</span>
 								</div>
 								<div className="flex items-center gap-2">
-									<span className="font-mono text-sm text-primary">
+									<span className="font-mono text-sm text-secondary">
 										{meta.role}
 									</span>
 									<span className="badge badge-sm font-mono border-0 bg-base-300 text-base-content/60">
@@ -51,7 +57,7 @@ export default function Experience() {
 								</div>
 							</div>
 
-							<div className="mt-2 font-mono text-sm text-base-content/80 leading-relaxed [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2.5 [&_li]:flex [&_li]:items-start [&_li]:gap-2.5 [&_li]:before:content-['–'] [&_li]:before:text-accent [&_li]:before:shrink-0 [&_li]:before:pt-0.5">
+							<div className="prose prose-sm sm:prose-base mt-2 max-w-none font-mono prose-headings:font-mono prose-p:text-base-content/80 prose-li:text-base-content/80 prose-li:marker:text-accent">
 								<Content />
 							</div>
 						</div>

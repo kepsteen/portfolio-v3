@@ -66,8 +66,7 @@ export default function FeaturedProjects() {
 						<ProjectCoverImage
 							src={project.metadata.image}
 							alt={
-								project.metadata.imageAlt ??
-								`${project.metadata.name} preview`
+								project.metadata.imageAlt ?? `${project.metadata.name} preview`
 							}
 							heightClass={FEATURED_WINDOW_HEIGHT}
 						/>

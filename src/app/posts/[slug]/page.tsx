@@ -70,7 +70,7 @@ export default async function PostDetailPage({ params }: PageProps) {
 					</div>
 				</header>
 
-				<div className="mt-10 font-mono text-sm text-base-content/90 leading-relaxed [&_h2]:font-bold [&_h2]:text-lg [&_h2]:text-accent [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:first:mt-0 [&_p]:mb-4 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2 [&_li]:flex [&_li]:items-start [&_li]:gap-2 [&_li]:before:content-['–'] [&_li]:before:text-accent [&_li]:before:shrink-0 [&_li]:before:pt-0.5">
+				<div className="mt-10 prose prose-sm sm:prose-base max-w-none font-mono prose-headings:font-mono prose-headings:text-base-content prose-h2:text-accent prose-h3:text-secondary prose-p:text-base-content/85 prose-strong:text-base-content prose-code:text-secondary prose-code:font-mono prose-pre:bg-base-200 prose-pre:text-base-content prose-a:text-primary hover:prose-a:text-primary/80 prose-hr:border-base-300 prose-li:text-base-content/85">
 					<Content />
 				</div>
 			</main>

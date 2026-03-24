@@ -15,11 +15,13 @@ export default function PostsPage() {
 		<>
 			<Navbar />
 			<main className="px-8 pt-24 max-w-3xl mx-auto pb-20">
-				<h1 className="font-mono text-3xl font-bold text-primary">Posts</h1>
-				<p className="font-mono text-base-content/70 mt-4 max-w-2xl leading-relaxed">
+				<div className="prose prose-sm sm:prose-base max-w-none font-mono prose-headings:font-mono prose-headings:text-primary prose-p:text-base-content/75">
+					<h1 className="mb-0">Posts</h1>
+					<p className="mt-4 max-w-2xl">
 					Recent writing and notes. Each entry is MDX with metadata for this list and the post
 					page.
-				</p>
+					</p>
+				</div>
 
 				<PostsListing posts={listItems} />
 			</main>

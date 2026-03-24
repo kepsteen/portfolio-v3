@@ -28,11 +28,13 @@ export default function ProjectsPage() {
 		<>
 			<Navbar />
 			<main className="px-8 pt-24 max-w-6xl mx-auto pb-20">
-				<h1 className="font-mono text-3xl font-bold text-primary">Projects</h1>
-				<p className="font-mono text-base-content/70 mt-4 max-w-2xl leading-relaxed">
-					Selected work and experiments. Each project is authored as MDX alongside structured
-					metadata for reuse on the home page and here.
-				</p>
+				<div className="prose prose-sm sm:prose-base max-w-none font-mono prose-headings:font-mono prose-headings:text-secondary prose-p:text-base-content/75">
+					<h1 className="mb-0">Projects</h1>
+					<p className="mt-4 max-w-2xl">
+						Selected work and experiments. Each project is authored as MDX
+						alongside structured metadata for reuse on the home page and here.
+					</p>
+				</div>
 
 				<div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
 					{projects.map(({ metadata }) => (
@@ -47,13 +49,13 @@ export default function ProjectsPage() {
 							<ProjectCoverImage
 								src={metadata.image}
 								alt={metadata.imageAlt ?? `${metadata.name} preview`}
-								heightClass="h-48"
+								heightClass="h-56 md:h-60"
 							/>
 							<div className="card-body p-5 gap-3">
 								<h2 className="font-mono font-bold text-lg text-accent">
 									{metadata.name}
 								</h2>
-								<p className="font-mono text-sm text-base-content/60 leading-relaxed">
+								<p className="font-mono text-[0.95rem] text-base-content/70 leading-7">
 									{metadata.description}
 								</p>
 								<div className="flex flex-wrap gap-1.5">
