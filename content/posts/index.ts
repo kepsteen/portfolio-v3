@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 
+import type { Tag } from "../tags";
 import HelloWorld, { metadata as helloWorldMeta } from "./01-hello-world.mdx";
-import NextAppRouter, { metadata as nextAppRouterMeta } from "./02-next-app-router.mdx";
 
 export type PostMetadata = {
 	slug: string;
@@ -10,7 +10,7 @@ export type PostMetadata = {
 	date: string;
 	/** Short preview for listings */
 	excerpt: string;
-	tags: string[];
+	tags: Tag[];
 };
 
 export type PostEntry = {
@@ -20,7 +20,6 @@ export type PostEntry = {
 
 const unsorted: PostEntry[] = [
 	{ metadata: helloWorldMeta as PostMetadata, Content: HelloWorld },
-	{ metadata: nextAppRouterMeta as PostMetadata, Content: NextAppRouter },
 ];
 
 function byDateDesc(a: PostEntry, b: PostEntry): number {

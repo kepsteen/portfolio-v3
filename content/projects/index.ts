@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 
+import type { Tag } from "../tags";
 import PortfolioV3, {
 	metadata as portfolioV3Meta,
 } from "./02-portfolio-v3.mdx";
@@ -10,7 +11,7 @@ export type ProjectMetadata = {
 	slug: string;
 	name: string;
 	description: string;
-	tags: string[];
+	tags: Tag[];
 	/** Path served from `public/`, e.g. `/june-bug.webp` */
 	image?: string | null;
 	imageAlt?: string | null;

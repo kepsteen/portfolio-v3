@@ -47,7 +47,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 				</Link>
 
 				<header className="flex flex-col gap-4 border-b border-base-300 pb-8">
-					<h1 className="font-mono text-3xl font-bold text-primary">
+					<h1 className="font-mono text-3xl font-bold text-accent">
 						{metadata.name}
 					</h1>
 					<p className="font-mono text-base text-base-content/70 leading-relaxed">
@@ -103,7 +103,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 					</div>
 				)}
 
-				<div className="mt-10 font-mono text-sm text-base-content/90 leading-relaxed [&_h2]:font-bold [&_h2]:text-lg [&_h2]:text-accent [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:first:mt-0 [&_p]:mb-4 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2 [&_li]:flex [&_li]:items-start [&_li]:gap-2 [&_li]:before:content-['–'] [&_li]:before:text-accent [&_li]:before:shrink-0 [&_li]:before:pt-0.5">
+				<div className="mt-10 font-mono text-sm text-base-content/90 leading-relaxed [&_h2]:font-bold [&_h2]:text-lg [&_h2]:text-secondary [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:first:mt-0 [&_p]:mb-4 [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-2 [&_li]:flex [&_li]:items-start [&_li]:gap-2 [&_li]:before:content-['–'] [&_li]:before:text-accent [&_li]:before:shrink-0 [&_li]:before:pt-0.5">
 					<Content />
 				</div>
 			</main>

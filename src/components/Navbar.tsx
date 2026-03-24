@@ -43,7 +43,7 @@ const moreLinks = [
 const themes = [
 	{
 		id: "aura-dark",
-		label: "Aura Dark",
+		label: "Aura Dark (My IDE Theme)",
 		bg: "oklch(0.196 0.006 295.7)",
 		colors: [
 			"oklch(0.677 0.16 280)",
@@ -207,7 +207,7 @@ export default function Navbar() {
 									</span>
 								);
 							})}
-							{segments.length > 0 ? <span>/</span> : null}
+							<span>/</span>
 							<span className="cursor-blink text-primary">▋</span>
 						</span>
 					</div>

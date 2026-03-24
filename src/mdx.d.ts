@@ -10,7 +10,7 @@ type ProjectMetadata = {
 	slug: string;
 	name: string;
 	description: string;
-	tags: string[];
+	tags: import("../content/tags").Tag[];
 	image?: string | null;
 	imageAlt?: string | null;
 	githubUrl?: string | null;
@@ -26,6 +26,6 @@ declare module "*.mdx" {
 				title: string;
 				date: string;
 				excerpt: string;
-				tags: string[];
+				tags: import("../content/tags").Tag[];
 		  };
 }
