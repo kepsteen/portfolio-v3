@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Navbar from "@/components/Navbar";
+import DrosteWindow from "@/components/DrosteWindow";
 import ProjectCoverImage from "@/components/ProjectCoverImage";
 import { projects } from "../../../content/projects/index";
 
@@ -23,7 +24,14 @@ function MacDots() {
 	);
 }
 
-export default function ProjectsPage() {
+type Props = {
+	searchParams: Promise<{ droste?: string }>;
+};
+
+export default async function ProjectsPage({ searchParams }: Props) {
+	const { droste } = await searchParams;
+	const isDroste = droste === "1";
+
 	return (
 		<>
 			<Navbar />
@@ -46,11 +54,15 @@ export default function ProjectsPage() {
 							<div className="px-4 py-3 bg-base-300 flex items-center justify-between">
 								<MacDots />
 							</div>
-							<ProjectCoverImage
-								src={metadata.image}
-								alt={metadata.imageAlt ?? `${metadata.name} preview`}
-								heightClass="h-56 md:h-60"
-							/>
+							{metadata.slug === "portfolio-v3" && !isDroste ? (
+								<DrosteWindow heightClass="h-56 md:h-60" />
+							) : (
+								<ProjectCoverImage
+									src={metadata.image}
+									alt={metadata.imageAlt ?? `${metadata.name} preview`}
+									heightClass="h-56 md:h-60"
+								/>
+							)}
 							<div className="card-body p-5 gap-3">
 								<h2 className="font-mono font-bold text-lg text-accent">
 									{metadata.name}
