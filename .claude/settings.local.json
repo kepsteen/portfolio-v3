@@ -12,7 +12,19 @@
       "Bash(pnpm build:*)",
       "Bash(ls /Users/codyepstein/repos/portfolio-v3/node_modules/.pnpm/next@16.2.1*/node_modules/next/dist/docs/)",
       "Bash(find /Users/codyepstein/repos/portfolio-v3/node_modules/.pnpm/next@16.2.1*/node_modules/next/dist/docs -name \"*.md\")",
-      "Bash(grep -r \"useContext\\\\|useState\\\\|useReducer\\\\|Provider\" /Users/codyepstein/repos/portfolio-v3/src --include=*.tsx --include=*.ts)"
+      "Bash(grep -r \"useContext\\\\|useState\\\\|useReducer\\\\|Provider\" /Users/codyepstein/repos/portfolio-v3/src --include=*.tsx --include=*.ts)",
+      "Bash(pnpm tsx *)",
+      "Bash(pnpm embed *)",
+      "Bash(pnpm dev *)",
+      "Bash(tee /tmp/portfolio-dev.log)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(curl -s -X POST http://localhost:3000/api/chat -H 'content-type: application/json' -d '{\"messages\":[{\"id\":\"1\",\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"text\":\"What is JuneBug and what is the tech stack?\"}]}]}')",
+      "Bash(curl -s -X POST http://localhost:3001/api/chat -H 'content-type: application/json' -d '{\"messages\":[{\"id\":\"1\",\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"text\":\"What is JuneBug and what is the tech stack?\"}]}]}')",
+      "Bash(curl -s -X POST http://localhost:3001/api/chat -H 'content-type: application/json' -d '{\"messages\":[{\"id\":\"1\",\"role\":\"user\",\"parts\":[{\"type\":\"text\",\"text\":\"What is JuneBug?\"}]}]}')",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"Home: %{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(pnpm tsc *)",
+      "Bash(kill %1)"
     ]
   }
 }

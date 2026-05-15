@@ -1,13 +1,10 @@
 "use client";
 
-import { IconX, IconSend } from "@tabler/icons-react";
+import { useChat } from "@ai-sdk/react";
+import { IconSend, IconX } from "@tabler/icons-react";
+import { DefaultChatTransport } from "ai";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-interface Message {
-	role: "user" | "assistant";
-	content: string;
-}
 
 const suggestedQuestions = [
 	"What tech stack do you use?",
@@ -20,7 +17,7 @@ function TypingIndicator() {
 	return (
 		<div className="chat chat-start">
 			<div className="chat-header">
-				<span className="font-mono text-xs text-base-content/50">Cody AI</span>
+				<span className="font-mono text-xs text-base-content/50">Luna</span>
 			</div>
 			<div className="chat-bubble bg-base-300">
 				<div className="flex items-center gap-1 h-4">
@@ -35,18 +32,27 @@ function TypingIndicator() {
 
 export default function ChatWindow() {
 	const [isOpen, setIsOpen] = useState(false);
-	const [messages, setMessages] = useState<Message[]>([]);
 	const [input, setInput] = useState("");
-	const [isTyping, setIsTyping] = useState(false);
 	const messagesEndRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
 
-	// Auto-scroll to bottom when messages change
+	const { messages, sendMessage, status } = useChat({
+		transport: new DefaultChatTransport({ api: "/api/chat" }),
+	});
+
+	const isBusy = status === "submitted" || status === "streaming";
+	const showTypingIndicator =
+		status === "submitted" ||
+		(status === "streaming" &&
+			messages.at(-1)?.role === "assistant" &&
+			(messages.at(-1)?.parts.length ?? 0) === 0);
+
+	// Auto-scroll to bottom on new content
 	useEffect(() => {
 		if (isOpen && messagesEndRef.current) {
 			messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
 		}
-	}, [messages, isTyping, isOpen]);
+	}, [messages, status, isOpen]);
 
 	// Focus input when panel opens
 	useEffect(() => {
@@ -55,7 +61,7 @@ export default function ChatWindow() {
 		}
 	}, [isOpen]);
 
-	// Close on Escape key
+	// Close on Escape
 	useEffect(() => {
 		const handleEscape = (e: KeyboardEvent) => {
 			if (e.key === "Escape" && isOpen) {
@@ -66,34 +72,16 @@ export default function ChatWindow() {
 		return () => document.removeEventListener("keydown", handleEscape);
 	}, [isOpen]);
 
-	const handleSend = async (content: string) => {
-		if (!content.trim()) return;
-
-		const userMessage: Message = { role: "user", content: content.trim() };
-		setMessages((prev) => [...prev, userMessage]);
+	const send = (text: string) => {
+		const trimmed = text.trim();
+		if (!trimmed || isBusy) return;
+		sendMessage({ text: trimmed });
 		setInput("");
-		setIsTyping(true);
-
-		// Simulate typing delay
-		await new Promise((resolve) => setTimeout(resolve, 1500));
-
-		// Placeholder response for now
-		setIsTyping(false);
-		const placeholderResponse: Message = {
-			role: "assistant",
-			content:
-				"I'm not connected to a brain yet! Check back soon for real answers about Cody.",
-		};
-		setMessages((prev) => [...prev, placeholderResponse]);
-	};
-
-	const handleSuggestedClick = (question: string) => {
-		handleSend(question);
 	};
 
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		handleSend(input);
+		send(input);
 	};
 
 	return (
@@ -156,7 +144,7 @@ export default function ChatWindow() {
 						aria-live="polite"
 					>
 						{/* Empty state with suggested questions */}
-						{messages.length === 0 && !isTyping && (
+						{messages.length === 0 && !isBusy && (
 							<div className="h-full flex flex-col justify-center">
 								<div className="flex flex-col items-center gap-4 text-center mb-4">
 									<div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-accent ring-offset-2 ring-offset-base-200">
@@ -173,48 +161,50 @@ export default function ChatWindow() {
 									</p>
 								</div>
 								<div className="flex flex-col gap-2 px-2">
-									{suggestedQuestions.map((question) => {
-										return (
-											<button
-												key={question}
-												onClick={() => handleSuggestedClick(question)}
-												className={`btn btn-sm btn-base-content btn-soft hover:bg-primary hover:text-base-content font-mono text-xs normal-case`}
-											>
-												{question}
-											</button>
-										);
-									})}
+									{suggestedQuestions.map((question) => (
+										<button
+											key={question}
+											onClick={() => send(question)}
+											className="btn btn-sm btn-base-content btn-soft hover:bg-primary hover:text-base-content font-mono text-xs normal-case"
+										>
+											{question}
+										</button>
+									))}
 								</div>
 							</div>
 						)}
 
 						{/* Messages */}
-						{messages.map((message, index) =>
-							message.role === "user" ? (
-								<div key={index} className="chat chat-end">
+						{messages.map((message) => {
+							const text = message.parts
+								.filter((p) => p.type === "text")
+								.map((p) => (p as { text: string }).text)
+								.join("");
+							if (!text) return null;
+							return message.role === "user" ? (
+								<div key={message.id} className="chat chat-end">
 									<div className="chat-header">
 										<span className="font-mono text-xs text-primary">You</span>
 									</div>
-									<div className="chat-bubble chat-bubble-primary font-mono text-sm">
-										{message.content}
+									<div className="chat-bubble chat-bubble-primary font-mono text-sm whitespace-pre-wrap">
+										{text}
 									</div>
 								</div>
 							) : (
-								<div key={index} className="chat chat-start">
+								<div key={message.id} className="chat chat-start">
 									<div className="chat-header">
 										<span className="font-mono text-xs text-secondary">
 											Luna
 										</span>
 									</div>
-									<div className="chat-bubble chat-bubble-secondary font-mono text-sm">
-										{message.content}
+									<div className="chat-bubble chat-bubble-secondary font-mono text-sm whitespace-pre-wrap">
+										{text}
 									</div>
 								</div>
-							),
-						)}
+							);
+						})}
 
-						{/* Typing indicator */}
-						{isTyping && <TypingIndicator />}
+						{showTypingIndicator && <TypingIndicator />}
 
 						<div ref={messagesEndRef} />
 					</div>
@@ -231,12 +221,12 @@ export default function ChatWindow() {
 								value={input}
 								onChange={(e) => setInput(e.target.value)}
 								placeholder="Type a message..."
-								disabled={isTyping}
+								disabled={isBusy}
 								className="input font-mono text-sm join-item flex-1 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-inset"
 							/>
 							<button
 								type="submit"
-								disabled={isTyping || !input.trim()}
+								disabled={isBusy || !input.trim()}
 								className="btn btn-accent join-item"
 								aria-label="Send message"
 							>
