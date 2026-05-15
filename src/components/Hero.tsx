@@ -2,9 +2,13 @@ import {
 	IconBrandGithub,
 	IconBrandLinkedin,
 	IconArrowRight,
+	IconFileTypePdf,
 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
+
+const RESUME_FILE = "Cody-Epstein-Resume.pdf";
+const RESUME_PDF = `/${RESUME_FILE}`;
 
 const socialLinks = [
 	{ label: "GitHub", href: "https://github.com", icon: IconBrandGithub },
@@ -32,8 +36,8 @@ export default function Hero() {
 					<p className="font-mono text-base text-base-content/80 leading-relaxed max-w-2xl">
 						Full-stack dev who works across every layer of the app — backend,
 						frontend, and everything holding them together. Currently shipping
-						production software in gov tech, previously in startups. I like small
-						teams, hard problems, and owning solutions from end to end.
+						production software in gov tech, previously in startups. I like
+						small teams, hard problems, and owning solutions from end to end.
 					</p>
 
 					{/* Social links */}
@@ -54,6 +58,18 @@ export default function Hero() {
 								)}
 							</span>
 						))}
+						<span className="flex items-center gap-3">
+							<span className="text-base-content/30">|</span>
+							<a
+								href={RESUME_PDF}
+								className="flex items-center gap-1.5 hover:text-primary transition-colors"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<IconFileTypePdf size={16} stroke={1.5} />
+								Resume
+							</a>
+						</span>
 						<span className="text-base-content/30">|</span>
 						<Link
 							href="/about"

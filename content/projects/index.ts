@@ -9,6 +9,9 @@ import PicklePal, { metadata as picklePalMeta } from "./03-picklepal.mdx";
 import ReactExpressStarter, {
 	metadata as reactExpressStarterMeta,
 } from "./04-react-express-starter.mdx";
+import SliceStudios, {
+	metadata as sliceStudiosMeta,
+} from "./05-slice-studios.mdx";
 
 export type ProjectMetadata = {
 	slug: string;
@@ -28,6 +31,7 @@ export type ProjectEntry = {
 };
 
 export const projects: ProjectEntry[] = [
+	{ metadata: sliceStudiosMeta as ProjectMetadata, Content: SliceStudios },
 	{ metadata: juneBugMeta as ProjectMetadata, Content: JuneBug },
 	{ metadata: picklePalMeta as ProjectMetadata, Content: PicklePal },
 	{
