@@ -14,7 +14,9 @@ const THEME_STORAGE_KEY = "theme";
 const DEFAULT_THEME = "aura-dark";
 
 function getThemeSnapshot(): string {
-	return localStorage.getItem(THEME_STORAGE_KEY) ?? DEFAULT_THEME;
+	const stored = localStorage.getItem(THEME_STORAGE_KEY);
+	if (stored === "caramellatte") return DEFAULT_THEME;
+	return stored ?? DEFAULT_THEME;
 }
 
 function subscribeTheme(onStoreChange: () => void): () => void {
@@ -127,17 +129,6 @@ const themes = [
 			"oklch(0.74703 0.158 39.947)",
 			"oklch(0.72537 0.177 2.72)",
 			"oklch(0.71294 0.166 299.844)",
-		],
-	},
-	{
-		id: "caramellatte",
-		label: "Caramel Latte",
-		bg: "oklch(0.98 0.016 73.684)",
-		colors: [
-			"oklch(0.4 0.123 38.172)",
-			"oklch(0 0 0)",
-			"oklch(0.2245 0.075 37.85)",
-			"oklch(0.4644 0.111 37.85)",
 		],
 	},
 ];
